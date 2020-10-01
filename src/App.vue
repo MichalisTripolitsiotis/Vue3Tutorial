@@ -1,15 +1,34 @@
 <template>
   <div class="app">
-    <UserProfile />
+    <nav>
+      <router-link to="/">
+        <div class="navigation-logo">
+          Twooter
+        </div>
+      </router-link>
+      <div class="navigation-user">
+        {{ state.user.username }}
+      </div>
+    </nav>
+    <router-view />
   </div>
 </template>
 
 <script>
-import UserProfile from "./components/UserProfile";
-
+import { reactive } from "vue";
 export default {
   name: "App",
-  components: { UserProfile },
+
+  setup() {
+    const state = reactive({
+      user: {
+        username: "Mike",
+      },
+    });
+    return {
+      state,
+    };
+  },
 };
 </script>
 
@@ -22,5 +41,21 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5%;
+  background-color: deeppink;
+  color: white;
+  .navigation-logo {
+    font-weight: bold;
+    font-size: 24px;
+  }
+  .navigation-user {
+    font-weight: bold;
+  }
 }
 </style>
