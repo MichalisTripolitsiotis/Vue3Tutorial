@@ -108,7 +108,7 @@ export default {
     return {
       route: useRoute(),
       followers: 0,
-      user: users[this.userId - 1] || users[0], does not work properly
+      user: users[this.userId.value - 1] || users[0], does not work properly
     };
   },
   watch: {
